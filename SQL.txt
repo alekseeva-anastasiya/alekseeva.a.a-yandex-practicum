@@ -1,7 +1,8 @@
-SELECT cour.login, 
-COUNT (ord."courierId") 
-FROM  "Couriers" AS cour 
-INNER JOIN "Orders" AS ord ON cour.id=ord."courierId" 
+SELECT cour.login,       
+COUNT (ord.id) 
+FROM "Couriers" AS cour
+LEFT JOIN "Orders" AS ord ON cour.id=ord."courierId"
+WHERE ord."inDelivery"=true
 GROUP BY cour.login;
 
 SELECT track,      
